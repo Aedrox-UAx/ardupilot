@@ -996,14 +996,12 @@ def start_vehicle(binary, opts, stuff, spawns=None):
                       (file,))
                 sys.exit(1)
 
-            file = os.path.abspath(file)
-
             if path is not None:
-                path += "," + file
+                path += "," + str(file)
             else:
-                path = file
+                path = str(file)
 
-            progress("Adding parameters from (%s)" % (file,))
+            progress("Adding parameters from (%s)" % (str(file),))
     if opts.param:
         param_file = tempfile.NamedTemporaryFile(mode='w', delete=False)
         atexit.register(os.unlink, param_file.name)
